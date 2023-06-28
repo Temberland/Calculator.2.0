@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +32,16 @@ namespace Calculator._2._0
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            string str = Suda.Text;
+            Button A = (Button)sender;
+            if (Suda.Text[0] == '-')
+            {
+                Suda.Text = Suda.Text.Substring(1, Suda.Text.Length-1);
+            }
+            else
+            {
+                Suda.Text = '-' + Suda.Text;
+            }
         }
         //Ниже идут кнопки
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -153,6 +164,120 @@ namespace Calculator._2._0
             if (Suda.Text == "") {
                 Suda.Text = "0";
             }
+        }
+        private void Button_Click_15(object sender, RoutedEventArgs e)
+        {
+            Button A = (Button)sender;
+            //Verh.Text = "";
+            bool zap = true;
+            for(int i = 0; i < Suda.Text.Length; i++)
+            {
+                if (Suda.Text[i] == ',')
+                {
+                    zap = false;
+                }
+            }
+            if (zap == true) { Suda.Text += ","; }
+
+        }
+        private void Button_Click_14(object sender, RoutedEventArgs e)
+        {
+            if (Verh.Text == "")
+            {
+                Verh.Text = Suda.Text + "+";
+                Suda.Text = "0";
+            }
+            if ((Verh.Text[Verh.Text.Length - 1] == '×') || (Verh.Text[Verh.Text.Length - 1] == '-') || (Verh.Text[Verh.Text.Length - 1] == '÷'))
+            {
+                Verh.Text = Verh.Text.Substring(0, Verh.Text.Length - 1) + "+";
+            }
+
+        }
+        private void Button_Click_16(object sender, RoutedEventArgs e)
+        {
+            if (Verh.Text == "")
+            {
+                Verh.Text = Suda.Text + "-";
+                Suda.Text = "0";
+            }
+            if ((Verh.Text[Verh.Text.Length - 1] == '+') || (Verh.Text[Verh.Text.Length - 1] == '+') || (Verh.Text[Verh.Text.Length - 1] == '÷'))
+            {
+                Verh.Text = Verh.Text.Substring(0, Verh.Text.Length - 1) + "-";
+            }
+        }
+
+        private void Button_Click_17(object sender, RoutedEventArgs e)
+        {
+            if (Verh.Text == "")
+            {
+                Verh.Text = Suda.Text + "×";
+                Suda.Text = "0";
+            }
+            if ((Verh.Text[Verh.Text.Length - 1] == '+') || (Verh.Text[Verh.Text.Length - 1] == '-') || (Verh.Text[Verh.Text.Length - 1] == '÷'))
+            {
+                Verh.Text = Verh.Text.Substring(0, Verh.Text.Length - 1) + "×";
+            }
+        }
+
+        private void Button_Click_18(object sender, RoutedEventArgs e)
+        {
+            if (Verh.Text == "")
+            {
+                Verh.Text = Suda.Text + "÷";
+                Suda.Text = "0";
+            }
+            if ((Verh.Text[Verh.Text.Length - 1] == '×') || (Verh.Text[Verh.Text.Length - 1] == '-') || (Verh.Text[Verh.Text.Length - 1] == '÷'))
+            {
+                Verh.Text = Verh.Text.Substring(0, Verh.Text.Length - 1) + "÷";
+            }
+        }
+
+        private void Button_Click_19(object sender, RoutedEventArgs e)
+        {
+            Suda.Text = Verh.Text + Suda.Text;
+            Suda.Text = Suda.Text.Replace(",", ".");
+            Suda.Text = Suda.Text.Replace("÷", "/");
+            Suda.Text = Suda.Text.Replace("×", "*");
+            Verh.Text = "";
+            string value = new DataTable().Compute(Suda.Text, null).ToString();
+            Suda.Text = value;
+        }
+
+        private void Button_Click_20(object sender, RoutedEventArgs e)
+        {
+            Suda.Text = Suda.Text + "*" + Suda.Text;
+            Suda.Text = Suda.Text.Replace(",", ".");
+            string value = new DataTable().Compute(Suda.Text, null).ToString();
+            Suda.Text = value;
+
+        }
+
+        private void Button_Click_21(object sender, RoutedEventArgs e)
+        {
+            if (Suda.Text[Suda.Text.Length-1] != '-')
+            {
+                //Suda.Text = "Math.Sqrt(" + Suda.Text + ")";
+                //Suda.Text = Suda.Text.Replace(",", ".");
+                //string value = new DataTable().Compute(Suda.Text, null).ToString();
+                //Suda.Text = value;
+
+                double number = double.Parse(Suda.Text.Replace(",", "."), CultureInfo.InvariantCulture);
+                double result = Math.Sqrt(number);
+                Suda.Text = result.ToString();
+            }
+        }
+
+        private void Button_Click_22(object sender, RoutedEventArgs e)
+        {
+            Suda.Text = "1/" + Suda.Text;
+            Suda.Text = Suda.Text.Replace(",", ".");
+            string value = new DataTable().Compute(Suda.Text, null).ToString();
+            Suda.Text = value;
+        }
+
+        private void Button_Click_23(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
