@@ -32,15 +32,18 @@ namespace Calculator._2._0
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string str = Suda.Text;
-            Button A = (Button)sender;
-            if (Suda.Text[0] == '-')
+            if (Suda.Text != "0")
             {
-                Suda.Text = Suda.Text.Substring(1, Suda.Text.Length-1);
-            }
-            else
-            {
-                Suda.Text = '-' + Suda.Text;
+                string str = Suda.Text;
+                Button A = (Button)sender;
+                if (Suda.Text[0] == '-')
+                {
+                    Suda.Text = Suda.Text.Substring(1, Suda.Text.Length - 1);
+                }
+                else
+                {
+                    Suda.Text = '-' + Suda.Text;
+                }
             }
         }
         //Ниже идут кнопки
@@ -234,13 +237,20 @@ namespace Calculator._2._0
 
         private void Button_Click_19(object sender, RoutedEventArgs e)
         {
-            Suda.Text = Verh.Text + Suda.Text;
-            Suda.Text = Suda.Text.Replace(",", ".");
-            Suda.Text = Suda.Text.Replace("÷", "/");
-            Suda.Text = Suda.Text.Replace("×", "*");
-            Verh.Text = "";
-            string value = new DataTable().Compute(Suda.Text, null).ToString();
-            Suda.Text = value;
+            if ((Suda.Text == "0") && (Verh.Text[Verh.Text.Length-1] == '÷'))
+            {
+
+            }
+            else
+            {
+                Suda.Text = Verh.Text + Suda.Text;
+                Suda.Text = Suda.Text.Replace(",", ".");
+                Suda.Text = Suda.Text.Replace("÷", "/");
+                Suda.Text = Suda.Text.Replace("×", "*");
+                Verh.Text = "";
+                string value = new DataTable().Compute(Suda.Text, null).ToString();
+                Suda.Text = value;
+            }
         }
 
         private void Button_Click_20(object sender, RoutedEventArgs e)
@@ -254,13 +264,8 @@ namespace Calculator._2._0
 
         private void Button_Click_21(object sender, RoutedEventArgs e)
         {
-            if (Suda.Text[Suda.Text.Length-1] != '-')
+            if (Suda.Text[0] != '-')
             {
-                //Suda.Text = "Math.Sqrt(" + Suda.Text + ")";
-                //Suda.Text = Suda.Text.Replace(",", ".");
-                //string value = new DataTable().Compute(Suda.Text, null).ToString();
-                //Suda.Text = value;
-
                 double number = double.Parse(Suda.Text.Replace(",", "."), CultureInfo.InvariantCulture);
                 double result = Math.Sqrt(number);
                 Suda.Text = result.ToString();
@@ -277,7 +282,80 @@ namespace Calculator._2._0
 
         private void Button_Click_23(object sender, RoutedEventArgs e)
         {
+            string str = "";
+            if (Verh.Text == "")
+            {
+                Suda.Text = "0";
+            }
+            else
+            {
+                str = Verh.Text.Substring(0, Verh.Text.Length - 1);
+                double Sverh = double.Parse(str.Replace(",", "."), CultureInfo.InvariantCulture);
+                double Sniz = double.Parse(Suda.Text.Replace(",", "."), CultureInfo.InvariantCulture);
+                Suda.Text = Convert.ToString((Sverh/100)*Sniz);
+            }
+        }
+        //M+
+        private void Button_Click_24(object sender, RoutedEventArgs e)
+        {
+            int selectedIndex = Contain.SelectedIndex;
+            if (Contain.SelectedItem != null)
+            {
+                string value = (Contain.SelectedItem.ToString() + "+" + Suda.Text);
+                value = value.Replace(",", ".");
+                value = new DataTable().Compute(value, null).ToString();
+                Contain.Items[selectedIndex] = value;
+                Contain.SelectedIndex = selectedIndex;
+            }
+        }
 
+        private void Contain_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_25(object sender, RoutedEventArgs e)
+        {
+            int selectedIndex = Contain.SelectedIndex;
+            if (Contain.SelectedItem != null)
+            {
+                string value = (Contain.SelectedItem.ToString() + "-" + Suda.Text);
+                value = value.Replace(",", ".");
+                value = new DataTable().Compute(value, null).ToString();
+                Contain.Items[selectedIndex] = value;
+                Contain.SelectedIndex = selectedIndex;
+            }
+        }
+        //MC - очистить 
+        private void Button_Click_26(object sender, RoutedEventArgs e)
+        {
+            //Contain.Items.Clear();
+            if (Contain.SelectedItem != null)
+            {
+                int selectedIndex = Contain.SelectedIndex;
+                Contain.Items.RemoveAt(selectedIndex);
+                Contain.SelectedItem = null;
+            }
+        }
+
+        private void Button_Click_27(object sender, RoutedEventArgs e)
+        {
+            int selectedIndex = Contain.SelectedIndex;
+            if (selectedIndex != -1)
+            {
+                string selectedValue = Contain.SelectedItem.ToString();
+                Suda.Text = selectedValue;
+            }
+        }
+        //MS
+        private void Button_Click_28(object sender, RoutedEventArgs e)
+        {
+            //Contain.Items.Add(Suda.Text);
+        }
+
+        private void Button_Click_29(object sender, RoutedEventArgs e)
+        {
+            Contain.Items.Add(Suda.Text);
         }
     }
 }

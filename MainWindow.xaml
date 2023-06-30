@@ -47,14 +47,14 @@
         <Button Content="CE" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Top" Height="54" Width="104" Grid.Column="1" Margin="0,25,0,0" Cursor="Hand" FontSize="24" FontWeight="Bold" Click="Button_Click_11"/>
         <Button Content="C" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Top" Height="54" Width="105" Grid.Column="2" Margin="0,25,0,0" Cursor="Hand" FontSize="24" FontWeight="Bold" Click="Button_Click_12"/>
         <Button Content="⌫" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Top" Height="54" Width="105" Grid.Column="3" Margin="0,25,0,0" Cursor="Hand" FontSize="24" FontWeight="Bold" Click="Button_Click_13"/>
-        <Button Content="MC" VerticalAlignment="Top" Height="42" Margin="10,42,0,0" Grid.RowSpan="2" Cursor="Hand" Grid.Row="1" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Width="69"/>
-        <Button Content="MR" VerticalAlignment="Top" Height="42" Margin="91,42,90,0" Grid.RowSpan="2" Cursor="Hand" Grid.Row="1" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="18"/>
-        <Button Content="M+" VerticalAlignment="Top" Height="42" Margin="46,42,11,0" Grid.RowSpan="2" Cursor="Hand" Grid.Row="1" Grid.Column="1" FontWeight="Bold" FontSize="18"/>
-        <Button VerticalAlignment="Top" Height="42" Margin="0,42,54,0" Grid.RowSpan="2" Cursor="Hand" Grid.Row="1" Grid.Column="2" Content="M-" FontWeight="Bold" FontSize="18"/>
-        <Button VerticalAlignment="Top" Height="42" Margin="80,42,100,0" Grid.RowSpan="2" Cursor="Hand" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <Button Content="MC" VerticalAlignment="Top" Height="42" Margin="12,42,0,0" Grid.RowSpan="2" Cursor="Hand" Grid.Row="1" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Width="74" Click="Button_Click_26"/>
+        <Button Content="MR" VerticalAlignment="Top" Height="42" Margin="96,42,85,0" Grid.RowSpan="2" Cursor="Hand" Grid.Row="1" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="18" Click="Button_Click_27"/>
+        <Button Content="M+" VerticalAlignment="Top" Height="42" Margin="47,42,10,0" Grid.RowSpan="2" Cursor="Hand" Grid.Row="1" Grid.Column="1" FontWeight="Bold" FontSize="18" Click="Button_Click_24"/>
+        <Button VerticalAlignment="Top" Height="42" Margin="2,42,53,0" Grid.RowSpan="2" Cursor="Hand" Grid.Row="1" Grid.Column="2" Content="M-" FontWeight="Bold" FontSize="18" Click="Button_Click_25"/>
+        <Button VerticalAlignment="Top" Height="42" Margin="0,42,95,0" Grid.RowSpan="2" Cursor="Hand" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Content="MS" HorizontalAlignment="Right" Width="70" FontWeight="Bold" FontSize="18" Click="Button_Click_29"/>
         <TextBox HorizontalAlignment="Left" Margin="12,49,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="466" Height="52" x:Name ="Suda" Grid.ColumnSpan="4" Grid.RowSpan="2" FontSize="36" FontWeight="Bold" TextAlignment="Right"/>
         <TextBox Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="12,19,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="466" x:Name="Verh" TextAlignment="Right"/>
-        <Button VerticalAlignment="Top" Height="42" Margin="33,42,22,0" Grid.RowSpan="2" Cursor="Hand" Grid.Row="1" Grid.Column="3"/>
+        <ComboBox Grid.Column="3" HorizontalAlignment="Left" Margin="35,42,0,0" Grid.Row="1" VerticalAlignment="Top" Width="80" Grid.RowSpan="2" Height="42" x:Name="Contain" SelectionChanged="Contain_SelectionChanged"/>
 
     </Grid>
 </Window>
