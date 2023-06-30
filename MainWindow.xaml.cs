@@ -289,10 +289,19 @@ namespace Calculator._2._0
             }
             else
             {
-                str = Verh.Text.Substring(0, Verh.Text.Length - 1);
-                double Sverh = double.Parse(str.Replace(",", "."), CultureInfo.InvariantCulture);
-                double Sniz = double.Parse(Suda.Text.Replace(",", "."), CultureInfo.InvariantCulture);
-                Suda.Text = Convert.ToString((Sverh/100)*Sniz);
+                if ((Verh.Text[Verh.Text.Length-1] == '-') || (Verh.Text[Verh.Text.Length - 1] == '+')){
+                    str = Verh.Text.Substring(0, Verh.Text.Length - 1);
+                    double Sverh = double.Parse(str.Replace(",", "."), CultureInfo.InvariantCulture);
+                    double Sniz = double.Parse(Suda.Text.Replace(",", "."), CultureInfo.InvariantCulture);
+                    Suda.Text = Convert.ToString((Sverh / 100) * Sniz); 
+                }
+                if ((Verh.Text[Verh.Text.Length - 1] == '÷') || (Verh.Text[Verh.Text.Length - 1] == '×'))
+                {
+                    str = Verh.Text.Substring(0, Verh.Text.Length - 1);
+                    double Sverh = double.Parse(str.Replace(",", "."), CultureInfo.InvariantCulture);
+                    double Sniz = double.Parse(Suda.Text.Replace(",", "."), CultureInfo.InvariantCulture);
+                    Suda.Text = Convert.ToString(Sniz/100);
+                }
             }
         }
         //M+
